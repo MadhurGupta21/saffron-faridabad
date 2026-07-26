@@ -169,13 +169,20 @@
     btn.addEventListener("click", () => {
       const target = btn.dataset.tab;
 
-      tabBtns.forEach((b) => b.classList.remove("is-active"));
+      tabBtns.forEach((b) => {
+        b.classList.remove("is-active");
+        b.setAttribute("aria-selected", "false");
+      });
       btn.classList.add("is-active");
+      btn.setAttribute("aria-selected", "true");
 
       tabPanels.forEach((panel) => {
-        if (panel.id === target) {
+        const match = panel.id === target || panel.id === "panel-" + target;
+        if (match) {
           panel.hidden = false;
           panel.classList.add("is-active");
+          // panels start hidden, so their reveal elements never intersect
+          panel.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible"));
         } else {
           panel.hidden = true;
           panel.classList.remove("is-active");
@@ -183,6 +190,7 @@
       });
     });
   });
+
 
   /* ---------- Scroll reveal ---------- */
   const revealElements = document.querySelectorAll(".reveal");
