@@ -1166,6 +1166,97 @@ button {
   }
 }
 
+.team-grid {
+  margin-top: 3rem;
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.team-card {
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: oklch(0.192 0.024 168 / 0.6);
+  transition: border-color 0.5s ease;
+}
+
+.team-card:hover {
+  border-color: color-mix(in oklab, var(--gold) 45%, transparent);
+}
+
+.team-photo {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  overflow: hidden;
+}
+
+.team-photo img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.7s ease;
+}
+
+.team-card:hover .team-photo img {
+  transform: scale(1.04);
+}
+
+.team-body {
+  padding: 1.5rem;
+}
+
+.team-name-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+}
+
+.team-name {
+  font-family: var(--font-display, serif);
+  font-size: 1.5rem;
+  color: var(--gilt, var(--gold));
+}
+
+.team-badge {
+  border-radius: 999px;
+  border: 1px solid color-mix(in oklab, var(--gold) 50%, transparent);
+  background: color-mix(in oklab, var(--gold) 12%, transparent);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.team-role {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.team-creds {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+
 .doctor-grid {
   display: grid;
   gap: 3.5rem;
